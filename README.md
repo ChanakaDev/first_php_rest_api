@@ -138,3 +138,42 @@ In order for an API to be considered RESTful, it has to conform to these criteri
         ```
 
     -   Run the seed command: `php artisan db:seed`
+
+-   Creating the API Routes
+
+    -   make the changes in "api.php" file. There we have 3 methods of doing the same thing
+
+        1. method
+
+        ```
+
+        ```
+
+        2. method (Recommended)
+
+        ```
+        Route::apiResource('/petitions', PetitionController::class);
+        ```
+
+        3. method
+
+        ```
+
+        ```
+
+        and import `use App\Http\Controllers\PetitionController;`
+
+    -   run the command: `php artisan route:list` to show all the routes in the terminal as follows
+
+        ```
+        GET|HEAD        / ............................................................................................................
+        POST            _ignition/execute-solution ..... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+        GET|HEAD        _ignition/health-check ................. ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+        POST            _ignition/update-config .............. ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
+        GET|HEAD        api/petitions ..................................................... petitions.index › PetitionController@index
+        POST            api/petitions ..................................................... petitions.store › PetitionController@store
+        GET|HEAD        api/petitions/{petition} ............................................ petitions.show › PetitionController@show
+        PUT|PATCH       api/petitions/{petition} ........................................ petitions.update › PetitionController@update
+        DELETE          api/petitions/{petition} ...................................... petitions.destroy › PetitionController@destroy
+        GET|HEAD        sanctum/csrf-cookie ........................ sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+        ```
