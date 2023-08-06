@@ -34,6 +34,22 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 - Creating a controller for the API: `php artisan make:controller ControllerNameController --api --model=model_name`
 - Creating an API Resource(Resource Type): `php artisan make:resource ModelNameResource`
 - Creating an API Resource(Collection Type): `php artisan make:resource ModelNameCollection` 
+- Update the up method of the migration file:
+  - 2023_08_06_183340_create_petitions_table.php
+  ```
+  public function up(): void
+  {
+      Schema::create('petitions', function (Blueprint $table) {
+          $table->id();
+          $table->String("title");
+          $table->Text("category");
+          $table->Text("description");
+          $table->String("author");
+          $table->Integer("signers");
+          $table->timestamps();
+      });
+  }
+  ```
 
 ## Folders we are using here
 
