@@ -27,7 +27,7 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 
 - Code-on-demand (optional): the ability to send executable code from the server to the client when requested, extending client functionality. 
 
-## All the commands used 
+## All of the commands and changes to the code
 
 - Creating a new laravel project: `laravel new project_name`
 - Creating models, migrations, factories and seeders: `php artisan make:model model_name`
@@ -50,6 +50,15 @@ In order for an API to be considered RESTful, it has to conform to these criteri
       });
   }
   ```
+- Running the database migration: `php artisan migrate` 
+  - Eroor:
+  ```
+  Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select * from information_schema.tables where table_schema = first_php_rest_api and table_name = migrations and table_type = 'BASE TABLE')
+  ```
+  - Solution: Run xampp and start Apache and MySQL
+
 
 ## Folders we are using here
 
