@@ -180,37 +180,37 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 
 -   Finalizing the PetitionController.php
 
-        -   in the resource type resource file `PetitionResource.php`
+    -   in the resource type resource file `PetitionResource.php`
+
+    ```
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'author' => $this->author,
+        ];
+    }
+    ```
+
+    -   in the collection type resource file `PetitionCollection.php`
+
+        1. method (output JSON without data key)
+
+        ```
+
+        ```
+
+        2. method (output JSON with data key)
 
         ```
         public function toArray(Request $request): array
         {
             return [
-                'id' => $this->id,
-                'title' => $this->title,
-                'author' => $this->author,
+                'data' => $this->collection,
             ];
         }
         ```
-
-        -   in the collection type resource file `PetitionCollection.php`
-
-            1. method (output JSON without data key)
-
-            ```
-
-            ```
-
-            2. method (output JSON with data key)
-
-            ```
-            public function toArray(Request $request): array
-            {
-                return [
-                    'data' => $this->collection,
-                ];
-            }
-            ```
 
         -   Update the controller `PetitionController.php`
 
