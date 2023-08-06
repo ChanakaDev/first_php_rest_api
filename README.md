@@ -195,13 +195,13 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 
     -   in the collection type resource file `PetitionCollection.php`
 
-        1. method (output JSON without data key)
+        1. method - output JSON without data key
 
         ```
 
         ```
 
-        2. method (output JSON with data key)
+        2. method - output JSON with data key (Recommended)
 
         ```
         public function toArray(Request $request): array
@@ -222,6 +222,7 @@ In order for an API to be considered RESTful, it has to conform to these criteri
         ```
 
         and import
+
         ```
         use App\Http\Resources\PetitionCollection;
         use App\Models\Petition;
