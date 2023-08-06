@@ -177,3 +177,52 @@ In order for an API to be considered RESTful, it has to conform to these criteri
         DELETE          api/petitions/{petition} ...................................... petitions.destroy › PetitionController@destroy
         GET|HEAD        sanctum/csrf-cookie ........................ sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
         ```
+
+-   Finalizing the PetitionController.php
+
+        -   in the resource type resource file `PetitionResource.php`
+
+        ```
+        public function toArray(Request $request): array
+        {
+            return [
+                'id' => $this->id,
+                'title' => $this->title,
+                'author' => $this->author,
+            ];
+        }
+        ```
+
+        -   in the collection type resource file `PetitionCollection.php`
+
+            1. method (output JSON without data key)
+
+            ```
+
+            ```
+
+            2. method (output JSON with data key)
+
+            ```
+            public function toArray(Request $request): array
+            {
+                return [
+                    'data' => $this->collection,
+                ];
+            }
+            ```
+
+        -   Update the controller `PetitionController.php`
+
+        ```
+        public function index()
+        {
+            return new PetitionCollection(Petition::all());
+        }
+        ```
+
+        and import
+        ```
+        use App\Http\Resources\PetitionCollection;
+        use App\Models\Petition;
+        ```
