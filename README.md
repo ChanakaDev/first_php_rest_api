@@ -46,7 +46,7 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 ## References
 
 -   Modifying columns: https://laravel.com/docs/5.3/migrations#changing-columns
--   
+-   FakerPHP for dummy data: https://github.com/FakerPHP/Faker
 
 ## All of the commands and changes to the code
 
@@ -97,3 +97,43 @@ In order for an API to be considered RESTful, it has to conform to these criteri
     }
     ```
     -   Run the database migration again: `php artisan migrate`
+-   Adding dummy data to the database
+
+    -   Update the factory file
+        PetitionFactory.php
+        ```
+        public function definition(): array
+        {
+          return [
+              'title'=>$this->faker->word,
+              'category'=>$this->faker->text(50),
+              'description'=>$this->faker->text(200),
+              'author'=>$this->faker->name,
+              'signers'=>$this->faker->numberBetween(0, 1000000)
+          ];
+        }
+        ```
+    -   Adding factory to the seeder
+
+        -   1st method (Using the DatabaseSeeder.php - seed for all the tables at once)
+            DatabaseSeeder.php
+
+            ```
+            public function run(): void
+            {
+              Petition::factory(50)->create();
+            }
+            ```
+
+            and put the import "use App\Models\Petition;"
+            or you can simply use **PhpStorm IDE**. It highligts missing imports for you.
+            and also, you can achieve the same thing in Vs Code using **"Intellicode, php intelephense and Php namespace resolver extentions"**
+
+        -   2nd method (Using the PetitionSeeder.php - seed the tables, one by one individually)
+            PetitionSeeder.php
+
+        ```
+
+        ```
+
+    -   Run the seed command: `php artisan db:seed`
