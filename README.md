@@ -58,7 +58,20 @@ In order for an API to be considered RESTful, it has to conform to these criteri
   SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select * from information_schema.tables where table_schema = first_php_rest_api and table_name = migrations and table_type = 'BASE TABLE')
   ```
   - Solution: Run xampp and start Apache and MySQL
-
+- Modifications
+  - Install doctrine/dbal for data table modifications: `omposer require doctrine/dbal`
+  - Modifying the a table: `php artisan make:migration change_column_type_in_table`
+  - Update the up method of the migration file:
+  2023_08_06_191640_change_category_type_in_petitions.php
+  ```
+  public function up(): void
+  {
+      Schema::table('petitions', function (Blueprint $table) {
+          $table -> String("category")->change();
+      });
+  }
+  ``` 
+  - Run the database migration again: `php artisan migrate`  
 
 ## Folders we are using here
 
