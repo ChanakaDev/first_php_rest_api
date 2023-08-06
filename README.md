@@ -31,7 +31,8 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 
 - Creating a new laravel project: `laravel new project_name`
 - Creating models, migrations, factories and seeders: `php artisan make:model model_name`
-
+- Creating a controller for the API: `php artisan make:controller ControllerNameController --api --model=model_name`
+- 
 
 ## Folders we are using here
 
