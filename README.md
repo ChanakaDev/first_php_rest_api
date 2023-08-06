@@ -45,6 +45,7 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 
 ## References
 
+-   What are APIs and RESTful APIs: https://www.redhat.com/en/topics/api/what-is-a-rest-api
 -   Modifying columns: https://laravel.com/docs/5.3/migrations#changing-columns
 -   FakerPHP for dummy data: https://github.com/FakerPHP/Faker
 
